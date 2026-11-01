@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { Compass, Plus, Trash2, Save, MapPin, CalendarDays, Wallet } from "lucide-react";
 import "./TripPlanner.css";
-
-const API = import.meta.env.VITE_API_URL || "http://localhost:5000";
+const API = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? "http://localhost:5000" : "");
 const defaultTrip = { destination: "Manali", days: 5, budget: 10000, activities: ["Mall Road", "Solang Valley", "Atal Tunnel", "Sissu", "Local sightseeing"] };
 
 export default function TripPlanner() {
