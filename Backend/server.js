@@ -1,7 +1,5 @@
 
 import dns from "node:dns";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
 import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
@@ -13,51 +11,105 @@ dns.setServers(["8.8.8.8", "1.1.1.1"]);
 const app = express();
 
 app.use(cors({
-  origin: process.env.FRONTEND_ORIGIN || "http://localhost:5173"
+  origin: (origin, callback) => {
+    const allowedOrigins = [
+      "http://localhost:5173",
+      ...(process.env.FRONTEND_ORIGIN || "")
+        .split(",")
+        .map(url => url.trim())
+        .filter(Boolean)
+    ];
+
+    if (!origin || allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+
+    callback(new Error("Not allowed by CORS"));
+  }
 }));
 
 app.use(express.json({ limit: "20kb" }));
 
-// MongoDB Trip Model
-const Trip = mongoose.model("Trip", new mongoose.Schema({
-  destination: {
-    type: String,
-    required: true,
-    trim: true,
-    maxlength: 90
-  },
-  days: {
-    type: Number,
-    required: true,
-    min: 1,
-    max: 30
-  },
-  budget: {
-    type: Number,
-    required: true,
-    min: 0,
-    max: 100000000
-  },
-  activities: [{
-    type: String,
-    maxlength: 100
-  }]
-}, { timestamps: true }));
+// MongoDB Connection
+let mongoConnectionPromise;
+
+async function connectDB() {
+  if (mongoose.connection.readyState === 1) {
+    return;
+  }
+
+  if (!mongoConnectionPromise) {
+    if (!process.env.MONGODB_URI) {
+      throw new Error("MONGODB_URI is missing");
+    }
+
+    mongoConnectionPromise = mongoose.connect(
+      process.env.MONGODB_URI,
+      { serverSelectionTimeoutMS: 10000 }
+    ).catch(error => {
+      mongoConnectionPromise = null;
+      throw error;
+    });
+  }
+
+  return mongoConnectionPromise;
+}
+
+// Trip Model
+const Trip = mongoose.models.Trip ||
+  mongoose.model("Trip", new mongoose.Schema({
+    destination: {
+      type: String,
+      required: true,
+      trim: true,
+      maxlength: 90
+    },
+    days: {
+      type: Number,
+      required: true,
+      min: 1,
+      max: 30
+    },
+    budget: {
+      type: Number,
+      required: true,
+      min: 0,
+      max: 100000000
+    },
+    activities: [{
+      type: String,
+      maxlength: 100
+    }]
+  }, { timestamps: true }));
 
 // Health Check
-app.get("/api/health", (_, res) => {
+app.get("/api/health", (req, res) => {
   res.json({ status: "ok" });
 });
 
+// Ensure MongoDB connection for trip routes
+app.use("/api/trips", async (req, res, next) => {
+  try {
+    await connectDB();
+    next();
+  } catch (error) {
+    console.error("MongoDB error:", error.message);
+    res.status(503).json({
+      error: "Database connection unavailable"
+    });
+  }
+});
+
 // Get Trips
-app.get("/api/trips", async (_, res) => {
+app.get("/api/trips", async (req, res) => {
   try {
     const trips = await Trip.find()
       .sort({ createdAt: -1 })
       .limit(100);
 
     res.json(trips);
-  } catch {
+  } catch (error) {
+    console.error(error);
     res.status(500).json({
       error: "Unable to load trips"
     });
@@ -104,7 +156,8 @@ app.post("/api/trips", async (req, res) => {
     });
 
     res.status(201).json(trip);
-  } catch {
+  } catch (error) {
+    console.error(error);
     res.status(500).json({
       error: "Unable to save trip"
     });
@@ -129,55 +182,22 @@ app.delete("/api/trips/:id", async (req, res) => {
     }
 
     res.json({ deleted: true });
-  } catch {
+  } catch (error) {
+    console.error(error);
     res.status(500).json({
       error: "Unable to delete trip"
     });
   }
 });
 
-// Serve React Frontend
-const __dirname = path.dirname(
-  fileURLToPath(import.meta.url)
-);
+// Error Handler
+app.use((error, req, res, next) => {
+  console.error(error);
 
-const frontendPath = path.resolve(__dirname, "../Frontend/dist");
-
-app.use(express.static(frontendPath));
-
-// React Router Fallback (Express 4 & 5 compatible)
-app.use((req, res, next) => {
-  if (
-    req.method !== "GET" ||
-    req.path.startsWith("/api/")
-  ) {
-    return next();
-  }
-
-  res.sendFile(path.join(frontendPath, "index.html"));
+  res.status(500).json({
+    error: "Internal server error"
+  });
 });
 
-// Start Server
-const port = Number(process.env.PORT) || 5000;
-
-try {
-  await mongoose.connect(
-    process.env.MONGODB_URI ||
-      "mongodb://127.0.0.1:27017/frontier",
-    {
-      serverSelectionTimeoutMS: 8000
-    }
-  );
-
-  app.listen(port, "0.0.0.0", () => {
-    console.log(
-      `FRONTIER running on port ${port}`
-    );
-  });
-} catch (error) {
-  console.error(
-    "MongoDB connection failed:",
-    error.message
-  );
-  process.exit(1);
-}
+// Vercel Express Entry Point
+export default app;
