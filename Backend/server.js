@@ -141,7 +141,7 @@ const __dirname = path.dirname(
   fileURLToPath(import.meta.url)
 );
 
-const frontendPath = path.resolve(__dirname, "../dist");
+const frontendPath = path.resolve(__dirname, "../Frontend/dist");
 
 app.use(express.static(frontendPath));
 
