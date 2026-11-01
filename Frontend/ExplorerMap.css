@@ -1,0 +1,395 @@
+
+.explorer-section {
+  padding: 110px 6%;
+  background: #171512;
+  color: #e9ddc6;
+}
+
+.explorer-heading {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 55px;
+}
+
+.explorer-eyebrow {
+  color: #c7a477;
+  font-size: 10px;
+  letter-spacing: 3px;
+  font-weight: 700;
+}
+
+.explorer-heading h2 {
+  font-family: "Cinzel", Georgia, serif;
+  font-size: clamp(35px, 5vw, 65px);
+  line-height: 1.2;
+  margin: 20px 0;
+}
+
+.explorer-heading h2 span {
+  color: #c6a477;
+}
+
+.explorer-heading p {
+  color: #a99b85;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.explorer-layout {
+  display: grid;
+  grid-template-columns: 340px minmax(0, 1fr);
+  min-height: 620px;
+  border: 1px solid #756146;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.3);
+}
+
+.explorer-sidebar {
+  background: #e2d2b4;
+  color: #30261c;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.explorer-sidebar-heading {
+  padding: 27px 24px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  border-bottom: 1px solid #bba88a;
+}
+
+.explorer-sidebar-heading svg {
+  color: #963a2a;
+  flex-shrink: 0;
+}
+
+.explorer-sidebar-heading span {
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: #876747;
+}
+
+.explorer-sidebar-heading h3 {
+  font-family: "Cinzel", Georgia, serif;
+  font-size: 16px;
+  margin: 7px 0 0;
+}
+
+.explorer-search {
+  margin: 22px 20px;
+  border: 1px solid #ae9b7e;
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  gap: 10px;
+}
+
+.explorer-search svg {
+  color: #806c50;
+  flex-shrink: 0;
+}
+
+.explorer-search input {
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #30261c;
+  width: 100%;
+  min-width: 0;
+  font: inherit;
+  font-size: 12px;
+}
+
+.explorer-search input::placeholder {
+  color: #85745d;
+}
+
+.explorer-list {
+  flex: 1;
+  overflow-y: auto;
+  max-height: 440px;
+}
+
+.explorer-place {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #cbb99c;
+  padding: 20px 22px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  text-align: left;
+  color: #30261c;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.explorer-place:hover,
+.explorer-place.active {
+  background: #cdb996;
+}
+
+.explorer-place-number {
+  font-family: "Cinzel", Georgia, serif;
+  font-size: 12px;
+  color: #a24733;
+}
+
+.explorer-place-info {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  flex: 1;
+}
+
+.explorer-place-info strong {
+  font-family: "Cinzel", Georgia, serif;
+  font-size: 15px;
+}
+
+.explorer-place-info small {
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: #7b6348;
+}
+
+.explorer-place > svg {
+  color: #9c4c36;
+}
+
+.explorer-empty {
+  padding: 20px;
+  font-size: 13px;
+}
+
+.explorer-sidebar-bottom {
+  margin-top: auto;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  border-top: 1px solid #bba88a;
+  font-size: 8px;
+  letter-spacing: 1px;
+  color: #79654a;
+}
+
+.explorer-map-frame {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  background: #c9b48d;
+  position: relative;
+}
+
+.explorer-map-top,
+.explorer-map-bottom {
+  min-height: 38px;
+  background: #d5c29d;
+  color: #5d4830;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+}
+
+.explorer-leaflet-map {
+  height: 544px;
+  width: 100%;
+  background: #d5c29d;
+  z-index: 1;
+}
+
+.explorer-leaflet-map .leaflet-tile-pane {
+  filter: sepia(0.8) saturate(0.55)
+    contrast(0.9) brightness(0.95);
+}
+
+.frontier-marker-wrap {
+  background: transparent;
+  border: none;
+}
+
+.frontier-map-marker {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(151, 46, 31, 0.18);
+  border: 1px solid #923c2c;
+  box-shadow: 0 0 0 5px rgba(151, 46, 31, 0.1);
+}
+
+.frontier-map-marker span {
+  width: 11px;
+  height: 11px;
+  background: #a33225;
+  border: 2px solid #f0d7a8;
+  border-radius: 50%;
+}
+
+.explorer-leaflet-map .leaflet-control-zoom a {
+  background: #e2d2b4;
+  color: #513924;
+  border-color: #ae9b7e;
+}
+
+.explorer-leaflet-map .leaflet-popup-content-wrapper {
+  background: #ead9b9;
+  color: #30261c;
+  border-radius: 3px;
+  font-family: Georgia, serif;
+}
+
+.explorer-leaflet-map .leaflet-popup-tip {
+  background: #ead9b9;
+}
+
+/* DESTINATION DETAILS */
+
+.explorer-detail-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 9, 7, 0.78);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.explorer-detail {
+  width: min(100%, 520px);
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #e5d5b7;
+  color: #30261c;
+  position: relative;
+  box-shadow: 0 25px 90px rgba(0, 0, 0, 0.5);
+}
+
+.explorer-detail-close {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  z-index: 2;
+  width: 38px;
+  height: 38px;
+  background: #211a15;
+  border: none;
+  color: #f2e4cc;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.explorer-detail-image {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  display: block;
+  filter: sepia(0.18) saturate(0.8);
+}
+
+.explorer-detail-content {
+  padding: 32px;
+}
+
+.explorer-detail-kicker {
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: #9b3d2b;
+  font-weight: 700;
+}
+
+.explorer-detail-content h3 {
+  font-family: "Cinzel", Georgia, serif;
+  font-size: 36px;
+  margin: 15px 0;
+}
+
+.explorer-detail-location {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #80654b;
+  font-size: 12px;
+}
+
+.explorer-detail-content p {
+  font-size: 14px;
+  line-height: 2;
+  color: #5f503f;
+  margin: 22px 0;
+}
+
+.explorer-save {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  padding: 16px;
+  border: none;
+  background: #963a2a;
+  color: #fff1d8;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+}
+
+.explorer-save:hover {
+  background: #b44a35;
+}
+
+@media (max-width: 900px) {
+  .explorer-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .explorer-list {
+    max-height: 250px;
+  }
+
+  .explorer-leaflet-map {
+    height: 480px;
+  }
+}
+
+@media (max-width: 600px) {
+  .explorer-section {
+    padding: 75px 5%;
+  }
+
+  .explorer-heading h2 {
+    font-size: 34px;
+  }
+
+  .explorer-map-top,
+  .explorer-map-bottom {
+    font-size: 8px;
+    letter-spacing: 0.5px;
+    padding: 10px;
+  }
+
+  .explorer-leaflet-map {
+    height: 400px;
+  }
+
+  .explorer-detail-image {
+    height: 200px;
+  }
+
+  .explorer-detail-content {
+    padding: 24px;
+  }
+}

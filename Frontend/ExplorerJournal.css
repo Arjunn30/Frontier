@@ -1,0 +1,368 @@
+
+.journal-section {
+  padding: 115px 6%;
+  background: #201b16;
+  color: #e9ddc6;
+}
+
+.journal-heading {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 55px;
+}
+
+.journal-heading > span {
+  color: #c7a477;
+  font-size: 10px;
+  letter-spacing: 3px;
+  font-weight: 700;
+}
+
+.journal-heading h2 {
+  font-family: "Cinzel", Georgia, serif;
+  font-size: clamp(34px, 5vw, 60px);
+  line-height: 1.25;
+  margin: 20px 0;
+}
+
+.journal-heading h2 em {
+  color: #c7a477;
+  font-style: normal;
+}
+
+.journal-heading p {
+  color: #b3a28c;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.journal-book {
+  max-width: 1180px;
+  margin: auto;
+  border: 9px solid #3a271b;
+  outline: 1px solid #826748;
+  background: #dfcfaf;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+}
+
+.journal-book-top,
+.journal-book-bottom {
+  background: #4b3324;
+  color: #d6b98e;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 17px 24px;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.journal-book-body {
+  display: grid;
+  grid-template-columns: 330px minmax(0, 1fr);
+  min-height: 560px;
+}
+
+.journal-index {
+  background: #cdbb98;
+  border-right: 4px double #907553;
+  color: #30261c;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.journal-index-heading {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 30px 23px;
+  border-bottom: 1px solid #a58b67;
+}
+
+.journal-index-heading svg {
+  color: #973f2b;
+}
+
+.journal-index-heading small {
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: #8d6d4d;
+}
+
+.journal-index-heading h3 {
+  font-family: "Cinzel", Georgia, serif;
+  font-size: 17px;
+  margin: 7px 0 0;
+}
+
+.journal-destinations {
+  flex: 1;
+}
+
+.journal-destination {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ae9878;
+}
+
+.journal-destination.active {
+  background: #bba580;
+}
+
+.journal-destination-open {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 21px 18px;
+  background: transparent;
+  border: 0;
+  text-align: left;
+  cursor: pointer;
+  color: #30261c;
+}
+
+.journal-destination-open span {
+  color: #9a4931;
+  font-size: 11px;
+}
+
+.journal-destination-open strong {
+  font-family: "Cinzel", Georgia, serif;
+  font-size: 14px;
+}
+
+.journal-remove {
+  background: transparent;
+  border: 0;
+  color: #9a4931;
+  cursor: pointer;
+  padding: 15px;
+}
+
+.journal-remove:hover {
+  color: #c33320;
+}
+
+.journal-empty {
+  padding: 60px 25px;
+  text-align: center;
+  color: #68553d;
+}
+
+.journal-empty svg {
+  color: #9a4931;
+}
+
+.journal-empty p {
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.journal-empty a {
+  display: inline-block;
+  margin-top: 15px;
+  color: #963a2a;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 5px;
+}
+
+.journal-index-footer {
+  margin-top: auto;
+  padding: 20px;
+  border-top: 1px solid #ae9878;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: #806649;
+}
+
+.journal-page {
+  min-width: 0;
+  padding: 45px 55px;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 34px,
+      rgba(110, 86, 54, 0.09) 35px
+    ),
+    #e4d4b4;
+  color: #34271c;
+}
+
+.journal-page-heading {
+  border-bottom: 1px solid #ae9878;
+  padding-bottom: 25px;
+  margin-bottom: 30px;
+}
+
+.journal-page-heading > span {
+  color: #9a4931;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.journal-page-heading h3 {
+  font-family: "Cinzel", Georgia, serif;
+  font-size: clamp(30px, 4vw, 45px);
+  margin: 12px 0;
+}
+
+.journal-page-heading p {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #806649;
+  font-size: 12px;
+}
+
+.journal-field-label {
+  display: block;
+  margin: 25px 0 13px;
+  color: #806044;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.journal-status-options {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.journal-status-options button {
+  padding: 13px 17px;
+  border: 1px solid #a48c69;
+  background: transparent;
+  color: #594530;
+  font-size: 10px;
+  letter-spacing: 1px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.journal-status-options button.selected {
+  background: #923c2c;
+  border-color: #923c2c;
+  color: #f7e8ce;
+}
+
+.journal-notes {
+  display: block;
+  width: 100%;
+  min-height: 180px;
+  resize: vertical;
+  padding: 18px;
+  border: 1px solid #b39c7a;
+  outline-color: #923c2c;
+  background: rgba(255, 248, 226, 0.45);
+  color: #34271c;
+  font: 15px/1.8 Georgia, serif;
+}
+
+.journal-notes::placeholder {
+  color: #998369;
+}
+
+.journal-save-button {
+  margin-top: 22px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 24px;
+  border: 0;
+  background: #923c2c;
+  color: #f7e8ce;
+  font-size: 11px;
+  letter-spacing: 1px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.journal-save-button:hover {
+  background: #b14a34;
+}
+
+.journal-saved-message {
+  color: #48613a;
+  font-size: 11px;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+.journal-welcome {
+  min-height: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 18px;
+}
+
+.journal-welcome svg {
+  color: #9a4931;
+}
+
+.journal-welcome span {
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: #946a47;
+}
+
+.journal-welcome h3 {
+  font-family: "Cinzel", Georgia, serif;
+  font-size: clamp(24px, 3vw, 35px);
+  margin: 0;
+}
+
+.journal-welcome p {
+  max-width: 320px;
+  font-size: 13px;
+  line-height: 1.9;
+  color: #806649;
+}
+
+@media (max-width: 850px) {
+  .journal-book-body {
+    grid-template-columns: 1fr;
+  }
+
+  .journal-index {
+    border-right: 0;
+    border-bottom: 4px double #907553;
+  }
+
+  .journal-page {
+    padding: 35px 25px;
+  }
+}
+
+@media (max-width: 600px) {
+  .journal-section {
+    padding: 80px 5%;
+  }
+
+  .journal-book {
+    border-width: 5px;
+  }
+
+  .journal-book-top,
+  .journal-book-bottom {
+    padding: 15px 12px;
+    font-size: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .journal-page {
+    padding: 28px 18px;
+  }
+}

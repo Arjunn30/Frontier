@@ -1,0 +1,78 @@
+/* FRONTIER — ARTHUR MORGAN EASTER EGGS */
+.al-poster-widget{display:flex;justify-content:center;padding:24px 15px}
+.al-wanted-trigger{display:flex;align-items:center;gap:12px;background:#c9aa7a;border:2px dashed #795536;color:#4b2c19;padding:13px 18px;font-family:Georgia,serif;font-size:12px;font-weight:700;letter-spacing:1px;cursor:pointer;transition:transform .25s,box-shadow .25s}
+.al-wanted-trigger:hover{transform:translateY(-3px) rotate(-1deg);box-shadow:0 8px 20px rgba(0,0,0,.2)}
+.al-wanted-trigger:focus-visible,.al-journal-open:focus-visible,.al-modal-close:focus-visible{outline:3px solid #a15b2e;outline-offset:3px}
+.al-trigger-arrow{font-size:18px}
+.al-journal-widget{display:flex;align-items:center;gap:20px;background:#d7c29d;border:1px solid #9e8059;padding:22px;margin:20px auto;color:#39291b;box-shadow:0 5px 15px rgba(0,0,0,.08);max-width:1000px}
+.al-journal-widget-icon{width:58px;height:58px;flex-shrink:0;border:1px solid #97734d;display:grid;place-items:center;color:#7e3f2b}
+.al-journal-widget-info{flex:1}
+.al-journal-widget-info span{font-size:10px;letter-spacing:2px;color:#91683f}
+.al-journal-widget-info h3{margin:7px 0;font-family:Georgia,serif;font-size:20px;color:#39291b}
+.al-journal-widget-info p{margin:0;font-size:13px;color:#775b40}
+.al-journal-open{background:#633b27;color:#f1ddba;border:1px solid #633b27;padding:12px 16px;font-family:Georgia,serif;font-size:11px;letter-spacing:1px;cursor:pointer;white-space:nowrap;transition:background .25s}
+.al-journal-open:hover{background:#8b5435}
+.al-modal-overlay{position:fixed;inset:0;z-index:99999;background:rgba(14,9,6,.88);backdrop-filter:blur(6px);display:flex;justify-content:center;align-items:center;padding:20px}
+.al-modal-paper{position:relative;width:min(100%,540px);max-height:88vh;overflow-y:auto;background:repeating-linear-gradient(0deg,transparent,transparent 31px,rgba(90,61,33,.055) 32px),#dfc79e;color:#382819;padding:42px 35px;border:9px solid #b79a70;outline:2px solid #62472e;box-shadow:0 30px 90px rgba(0,0,0,.65)}
+.al-modal-close{position:absolute;top:10px;right:10px;width:35px;height:35px;display:grid;place-items:center;background:transparent;color:#593b26;border:1px solid #97734f;cursor:pointer;z-index:2}
+.al-wanted-content{text-align:center;font-family:Georgia,serif}
+.al-wanted-top{font-size:10px;letter-spacing:3px}
+.al-wanted-heading{font-family:Georgia,serif;font-size:clamp(58px,12vw,90px);line-height:1;font-weight:900;letter-spacing:-3px;margin:14px 0;color:#352417}
+.al-wanted-stars{color:#8a4029;margin:15px 0}
+.al-wanted-portrait{width:170px;height:165px;border:4px double #805e3c;margin:20px auto;display:flex;flex-direction:column;align-items:center;justify-content:center;transform:rotate(-2deg);background:rgba(92,61,34,.08)}
+.al-wanted-monogram{font-size:75px;font-weight:900;line-height:1.1}
+.al-wanted-portrait span{font-size:9px;letter-spacing:2px}
+.al-wanted-content h3{font-size:32px;margin:20px 0 8px;font-family:Georgia,serif}
+.al-wanted-subtitle{font-size:11px;letter-spacing:1px}
+.al-wanted-divider{margin:22px auto;color:#8b432d}
+.al-wanted-description{font-size:13px;line-height:1.9;letter-spacing:1px}
+.al-wanted-status{font-size:27px;font-weight:900;margin:25px 0}
+.al-wanted-footer{font-size:9px;letter-spacing:2px;color:#8c6c49}
+.al-journal-content{text-align:center}
+.al-journal-date{font-size:10px;letter-spacing:2px;color:#905a3b}
+.al-journal-content h2{font-family:Georgia,serif;font-size:clamp(26px,5vw,37px);margin:24px 0}
+.al-journal-ornament{color:#944b2d;margin:20px auto 28px}
+.al-journal-content p{font-family:Georgia,serif;font-size:18px;line-height:1.9;text-align:left;margin:0 0 22px}
+.al-journal-signature{font-family:Georgia,serif;font-style:italic;font-size:17px;color:#8b472d;text-align:right;margin:30px 0}
+.al-journal-footnote{font-size:9px;letter-spacing:1px;color:#907354}
+@media(max-width:650px){.al-journal-widget{flex-direction:column;text-align:center;padding:20px 15px;margin:20px 12px}.al-journal-open{width:100%}.al-modal-paper{padding:42px 20px 28px;border-width:6px}.al-journal-content p{font-size:16px}}
+
+/* Arthur portrait: online Commons artwork, no local JPG required */
+.al-wanted-portrait {
+  width: min(100%, 240px);
+  height: 270px;
+  padding: 5px;
+  overflow: hidden;
+  border: 4px double #805e3c;
+  margin: 18px auto;
+  background: #b59a72;
+  display: block;
+  transform: rotate(-1deg);
+}
+.al-wanted-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  filter: sepia(.55) contrast(1.1);
+}
+/* Keep heading readable when modal scrolls */
+.al-wanted-heading { font-size: clamp(48px, 9vw, 72px); }
+
+/* Compact wanted notice that fits typical laptop screens */
+.al-modal-overlay { padding: 14px; }
+.al-modal-paper { box-sizing: border-box; width: min(100%, 500px); max-height: min(90dvh, 780px); padding: 24px 28px; border-width: 6px; }
+.al-wanted-heading { font-size: clamp(46px, 7vw, 65px); margin: 8px 0; }
+.al-wanted-stars { margin: 6px 0; }
+.al-wanted-portrait { box-sizing: border-box; width: 185px; height: 210px; margin: 10px auto; position: relative; }
+.al-wanted-image { position: relative; z-index: 1; }
+.al-image-fallback { display: none; }
+.al-image-unavailable { display: flex; align-items: center; justify-content: center; }
+.al-image-unavailable .al-image-fallback { display: block; font-size: 12px; line-height: 1.5; text-align: center; padding: 12px; color: #5c3e28; }
+.al-wanted-content h3 { font-size: 27px; margin: 12px 0 5px; }
+.al-wanted-divider { margin: 10px auto; }
+.al-wanted-description { line-height: 1.5; margin: 8px auto; }
+.al-wanted-status { font-size: 22px; margin: 12px 0; }
+.al-wanted-footer { margin: 8px 0; }
+@media(max-width:650px){.al-modal-paper{padding:34px 15px 18px}.al-wanted-portrait{width:160px;height:180px}.al-wanted-heading{font-size:46px}}
