@@ -1,0 +1,1 @@
+🏜️ FRONTIER — A cinematic, RDR2-inspired full-stack travel platform featuring an interactive India map, Explorer Journal, Expedition Planner, Arthur Morgan Easter eggs, and MongoDB-powered trip management. Built with React, Node.js & Express.
